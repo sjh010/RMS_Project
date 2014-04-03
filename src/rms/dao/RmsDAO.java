@@ -10,10 +10,4 @@ public interface RmsDAO {
 	
 	public abstract boolean registSaleInfo(SaleInfo saleInfo) throws Exception;
 	
-	public abstract void disconnectDB() throws Exception;
-
-	public abstract void connectDB() throws Exception;
-	
-
-
 }

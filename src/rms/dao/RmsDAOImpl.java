@@ -14,8 +14,7 @@ public class RmsDAOImpl implements RmsDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
-	@Override	
-	public void connectDB() throws Exception {
+	private void connectDB() throws Exception {
 		clz = Class.forName("oracle.jdbc.OracleDriver");
 		try {
 			con = DriverManager
@@ -36,8 +35,7 @@ public class RmsDAOImpl implements RmsDAO {
 		rs = null;
 	}
 	
-	@Override
-	public void disconnectDB() throws Exception {
+	private void disconnectDB() throws Exception {
 		try{
 			con.close();
 			con = null;;
@@ -50,43 +48,8 @@ public class RmsDAOImpl implements RmsDAO {
 	}
 	
 	@Override
-	public String registBuilding(Building building) throws Exception {
-		String building_id = searchBuilding(building);
-		if(building_id == null){
-			pstmt = con
-					.prepareStatement("insert into building values('',?,?,?)");
-			pstmt.setString(1, building.getType());
-			pstmt.setInt(2, building.getSize());
-			pstmt.setString(3, building.getAddr());
-	
-			pstmt.executeUpdate();
-			closePstmt();
-			
-			building_id = searchBuilding(building);
-		}
-		return building_id;
-	}
-	
-	private String searchBuilding(Building building) throws Exception {
-		String building_id = null;
-		pstmt = con
-				.prepareStatement("select building_id "
-						+ "from building "
-						+ "where building_addr = ?");
-		pstmt.setString(1, building.getAddr());
-		
-		rs = pstmt.executeQuery();
-		
-		if(rs.next()){
-			building_id = rs.getString(1);
-		}	
-		closeRs();
-		closePstmt();
-		return building_id;
-	}
-
-	@Override
 	public String registCustomer(Customer customer) throws Exception {
+		connectDB();
 		String customer_id = searchCustomer(customer);
 		if(customer_id == null){
 			pstmt = con
@@ -95,13 +58,13 @@ public class RmsDAOImpl implements RmsDAO {
 							+ "values('',?,?)");
 			
 			pstmt.setString(1, customer.getName());
-			pstmt.setString(2, customer.getPhoneNumber());
+			pstmt.setString(2, customer.getPhone());
 			pstmt.executeUpdate();
 			closePstmt();
 	
 			customer_id = searchCustomer(customer);
 		}
-				
+		disconnectDB();		
 		return customer_id;
 	}
 
@@ -112,7 +75,7 @@ public class RmsDAOImpl implements RmsDAO {
 						+ "from customer "
 						+ "where customer_name = ? and customer_tel = ?");
 		pstmt.setString(1, customer.getName());
-		pstmt.setString(2, customer.getPhoneNumber());
+		pstmt.setString(2, customer.getPhone());
 		
 		rs = pstmt.executeQuery();
 		
@@ -129,23 +92,26 @@ public class RmsDAOImpl implements RmsDAO {
 	
 	@Override
 	public boolean registSaleInfo(SaleInfo saleInfo) throws Exception {
+		connectDB();
 		pstmt = con
 				.prepareStatement("insert into "
 						+ "sale_info "
-						+ "values('',?,?,?,?,?,?,?)");
-		pstmt.setDate(1, saleInfo.getDate());
-		pstmt.setString(2, saleInfo.getBulidingId());
-		pstmt.setString(3, saleInfo.getContractType());
-		pstmt.setInt(4, saleInfo.getPrice());
-		pstmt.setInt(5, saleInfo.getDeposit());
-		pstmt.setString(6, saleInfo.getTenantId());
-		pstmt.setString(7, saleInfo.getHostId());
+						+ "values('','',?,?,?,?,?,?,?,?,?)");
+		pstmt.setString(1, saleInfo.getContractType());
+		pstmt.setString(2, saleInfo.getBuildingType());
+		pstmt.setString(3, saleInfo.getAddr());
+		pstmt.setInt(4, saleInfo.getSize());
+		pstmt.setInt(5, saleInfo.getPrice());
+		pstmt.setInt(6, saleInfo.getDeposit());
+		pstmt.setString(7, saleInfo.getBuildingFeature());
+		pstmt.setString(8, saleInfo.getTenant().getId());
+		pstmt.setString(9, saleInfo.getHost().getId());
 
 		pstmt.executeUpdate();
 		
 		closeRs();
 		closePstmt();
-		
+		disconnectDB();
 		return true;
 	}
 }

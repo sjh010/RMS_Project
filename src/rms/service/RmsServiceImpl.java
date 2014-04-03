@@ -51,13 +51,7 @@ public class RmsServiceImpl implements RmsService{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		try {
-			dao.disconnectDB();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 		return false;
 	}
 
