@@ -14,34 +14,21 @@ public class RmsServiceImpl implements RmsService{
 	}
 
 	@Override
-	public boolean inputSaleInfo(SaleInfo totalSaleInfo) {
+	public boolean inputSaleInfo(SaleInfo saleInfo) {
+		
+		boolean successFlag = false;
+		
+		createCustomer(saleInfo.getTenant());
+		createCustomer(saleInfo.getHost());
 		
 		try {
-			dao.connectDB();
+			 dao.registSaleInfo(saleInfo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		String bulidingId = createBuilding(totalSaleInfo.getBuilding());
-		String tenantId = createCustomer(totalSaleInfo.getTenant());
-		String hostId = createCustomer(totalSaleInfo.getHost());
-		
-		SaleInfo saleInfo = new SaleInfo()
-							.setDate(totalSaleInfo.getDate())
-							.setBulidingId(bulidingId)
-							.setContractType(totalSaleInfo.getContactType())
-							.setPrice(totalSaleInfo.getPrice())
-							.setDeposit(totalSaleInfo.getDeposit())
-							.setTenantId(tenantId)
-							.setHostId(hostId);
-		
-		
-		
-		return createSaleInfo(saleInfo);
-		
 	}
-	
 	
 	private String createCustomer(Customer customer){
 		
