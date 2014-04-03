@@ -109,7 +109,6 @@ public class RmsDAOImpl implements RmsDAO {
 
 		pstmt.executeUpdate();
 		
-		closeRs();
 		closePstmt();
 		disconnectDB();
 		
