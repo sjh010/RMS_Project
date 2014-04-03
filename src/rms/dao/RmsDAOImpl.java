@@ -26,8 +26,8 @@ public class RmsDAOImpl implements RmsDAO {
 	}
 	
 	private void closePstmt() throws Exception {
-		rs.close();
-		rs = null;
+		pstmt.close();
+		pstmt = null;
 	}
 	
 	private void closeRs() throws Exception {
@@ -69,6 +69,7 @@ public class RmsDAOImpl implements RmsDAO {
 	}
 
 	private String searchCustomer(Customer customer) throws Exception {
+		
 		String customer_id = null;
 		pstmt = con
 				.prepareStatement("select customer_id "
@@ -76,13 +77,12 @@ public class RmsDAOImpl implements RmsDAO {
 						+ "where customer_name = ? and customer_tel = ?");
 		pstmt.setString(1, customer.getName());
 		pstmt.setString(2, customer.getPhone());
-		
 		rs = pstmt.executeQuery();
 		
 		if(rs.next()){
 			customer_id = rs.getString(1);
 		}	
-
+		
 		closeRs();
 		closePstmt();
 		
@@ -112,6 +112,7 @@ public class RmsDAOImpl implements RmsDAO {
 		closeRs();
 		closePstmt();
 		disconnectDB();
+		
 		return true;
 	}
 }
