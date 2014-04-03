@@ -53,6 +53,6 @@ public class RegistButtonActionListener implements ActionListener{
 							.setBuildingFeature(buildingFeature);
 		
 		RmsService service = new RmsServiceImpl();
-		service.inputSaleInfo(saleInfo);
+		service.inputSaleInfo(saleInfo);//
 	}
 }
