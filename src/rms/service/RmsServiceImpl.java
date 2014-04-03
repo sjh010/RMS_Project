@@ -1,9 +1,12 @@
 package rms.service;
 
+import java.util.List;
+
 import rms.dao.RmsDAO;
 import rms.dao.RmsDAOImpl;
 import rms.vo.Customer;
 import rms.vo.SaleInfo;
+import rms.vo.SearchItem;
 
 public class RmsServiceImpl implements RmsService{
 
@@ -54,5 +57,12 @@ public class RmsServiceImpl implements RmsService{
 	
 		return false;
 	}
+
+	@Override
+	public List<SaleInfo> inputSearchInfo(SearchItem searchInfo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
