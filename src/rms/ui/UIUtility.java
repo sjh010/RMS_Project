@@ -11,12 +11,8 @@ public class UIUtility {
 	private static int comboBoxX = 20;
 	private static int textFieldX = 220;
 	
-	public static JButton[] setButton(Container contentPane){
+	public static JButton[] setButton(String[] buttonName, Container contentPane){
 		
-		String[] buttonName = {"건물종류", "계약종류", "평",
-				               "호수", "세(가격)", "보증금",
-				               "세입자이름", "세입자전번", "주인이름",
-				               "주인전번", "건물특징", "입력"};
 		JButton[] button = new JButton[buttonName.length];
 		
 		for(int i=0; i<button.length; i++){

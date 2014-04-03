@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 
-
 public class RmsUI {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("부동산 관리 시스템");				
@@ -16,7 +15,11 @@ public class RmsUI {
 		Container contentPane = frame.getContentPane();
 		
 		//버튼 만드는 Logic
-		JButton[] button = UIUtility.setButton(contentPane);
+		String[] buttonName = {"건물종류", "계약종류", "평",
+	               "호수", "세(가격)", "보증금",
+	               "세입자이름", "세입자전번", "주인이름",
+	               "주인전번", "건물특징", "입력"};
+		JButton[] button = UIUtility.setButton(buttonName, contentPane);
 		
 		//콤보박스 만드는 Logic
 		String[][] comboBoxList = {{"아파트", "주택", "빌라"},
@@ -38,4 +41,3 @@ public class RmsUI {
 		frame.setVisible(true);	
 	}
 }
-
