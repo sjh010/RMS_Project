@@ -19,8 +19,8 @@ public class RmsServiceImpl implements RmsService{
 		
 		boolean successFlag = false;
 		
-		createCustomer(saleInfo.getTenant());
-		createCustomer(saleInfo.getHost());
+		saleInfo.getTenant().setId(getCustomerId(saleInfo.getTenant()));
+		saleInfo.getHost().setId(getCustomerId(saleInfo.getHost()));
 		
 		try {
 			 successFlag = dao.registSaleInfo(saleInfo);
@@ -32,7 +32,7 @@ public class RmsServiceImpl implements RmsService{
 		return successFlag;
 	}
 	
-	private String createCustomer(Customer customer){
+	private String getCustomerId(Customer customer){
 		
 		try {
 			return dao.registCustomer(customer);

@@ -2,6 +2,7 @@ package rms.vo;
 
 public class Customer {
 	
+	private String id = null;
 	private String name;
 	private String phone;
 	
@@ -17,6 +18,14 @@ public class Customer {
 
 	public String getPhone() {
 		return phone;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	
