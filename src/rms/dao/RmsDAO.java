@@ -14,5 +14,6 @@ public interface RmsDAO {
 
 	public abstract void connectDB() throws Exception;
 	
+	// hohoho
 
 }
