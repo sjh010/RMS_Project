@@ -14,10 +14,12 @@ import rms.vo.SaleInfo;
 public class RegistButtonActionListener implements ActionListener{
 	JComboBox[] comboBox;
 	JTextField[] textField;
+	RmsService service;
 	
-	RegistButtonActionListener(JComboBox[] comboBox, JTextField[] textField){
+	RegistButtonActionListener(JComboBox[] comboBox, JTextField[] textField, RmsService service){
 		this.comboBox = comboBox;
 		this.textField = textField;
+		this.service = service;
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -52,7 +54,6 @@ public class RegistButtonActionListener implements ActionListener{
 							.setHost(host)
 							.setBuildingFeature(buildingFeature);
 		
-		RmsService service = new RmsServiceImpl();
-		service.inputSaleInfo(saleInfo);//
+		service.inputSaleInfo(saleInfo);
 	}
 }

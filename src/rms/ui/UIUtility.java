@@ -1,53 +1,56 @@
 package rms.ui;
 
-import java.awt.Container;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class UIUtility {
-	private static int buttonX = 20;
-	private static int comboBoxX = 20;
-	private static int textFieldX = 220;
+	private static int buttonX;
+	private static int comboBoxX;
+	private static int textFieldX;
 	
-	public static JButton[] setButton(String[] buttonName, Container contentPane){
+	public static JButton[] setButton(String[] buttonName, JPanel panel, int x){
 		
 		JButton[] button = new JButton[buttonName.length];
+		buttonX = x;
 		
 		for(int i=0; i<button.length; i++){
 			button[i] = new JButton(buttonName[i]);
 			button[i].setSize(100, 20);
 			button[i].setLocation(buttonX, 20);
-			contentPane.add(button[i]);
+			panel.add(button[i]);
 			buttonX += 100;
 		}
 		
 		return button;
 	}
 	
-	public static JComboBox[] setComboBox(String[][] comboBoxList, Container contentPane){
+	public static JComboBox[] setComboBox(String[][] comboBoxList, JPanel panel, int x){
 		
 		JComboBox[] comboBox = new JComboBox[comboBoxList.length];
+		comboBoxX = x;
 		
 		for(int i=0; i<comboBox.length; i++){
 			comboBox[i] = new JComboBox(comboBoxList[i]);
 			comboBox[i].setSize(100, 20);
 			comboBox[i].setLocation(comboBoxX, 40);
-			contentPane.add(comboBox[i]);
+			panel.add(comboBox[i]);
 			comboBoxX += 100;
 		}
 		
 		return comboBox;
 	}
 	
-	public static void setTextField(JTextField[] textField, Container contentPane){
+	public static void setTextField(JTextField[] textField, JPanel panel, int x){
+		
+		textFieldX = x;
 		
 		for(int i=0; i<textField.length; i++){
 			textField[i] = new JTextField();
 			textField[i].setSize(100, 20);
 			textField[i].setLocation(textFieldX, 40);
-			contentPane.add(textField[i]);
+			panel.add(textField[i]);
 			textFieldX += 100;
 		}
 		
