@@ -57,7 +57,7 @@ public class RegistPanel {
 	//텍스트필드 만드는 Logic
 	private void makeTextField(){
 		
-		JTextField[] textField = new JTextField[9];
+		textField = new JTextField[9];
 		UIUtility.setTextField(textField, panel, 220);
 	}
 	
