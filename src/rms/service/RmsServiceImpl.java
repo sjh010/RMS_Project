@@ -3,18 +3,22 @@ package rms.service;
 import java.util.List;
 
 import rms.dao.RmsDAO;
-import rms.dao.RmsDAOImpl;
+import rms.dao.RmsDAOInsert;
+import rms.dao.RmsDAOSearch;
 import rms.vo.Customer;
 import rms.vo.SaleInfo;
 import rms.vo.SearchItem;
 
 public class RmsServiceImpl implements RmsService{
 
-	private RmsDAO dao;
+	private RmsDAO insertDAO;
+	private RmsDAO searchDAO;
 	
 	public RmsServiceImpl() {
 		super();
-		this.dao = new RmsDAOImpl();
+		this.insertDAO = new RmsDAOInsert();
+		this.searchDAO = new RmsDAOSearch();
+		
 	}
 
 	@Override
@@ -26,7 +30,7 @@ public class RmsServiceImpl implements RmsService{
 		saleInfo.getHost().setId(getCustomerId(saleInfo.getHost()));
 		
 		try {
-			 successFlag = dao.registSaleInfo(saleInfo);
+			 successFlag = insertDAO.registSaleInfo(saleInfo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -38,7 +42,7 @@ public class RmsServiceImpl implements RmsService{
 	private String getCustomerId(Customer customer){
 		
 		try {
-			return dao.registCustomer(customer);
+			return insertDAO.registCustomer(customer);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,7 +53,7 @@ public class RmsServiceImpl implements RmsService{
 	private boolean createSaleInfo(SaleInfo saleInfo){
 		
 		try {
-			return dao.registSaleInfo(saleInfo);
+			return insertDAO.registSaleInfo(saleInfo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -59,9 +63,15 @@ public class RmsServiceImpl implements RmsService{
 	}
 
 	@Override
-	public List<SaleInfo> inputSearchInfo(SearchItem searchInfo) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<SaleInfo> inputSearchInfo(SearchItem searchItem) {
+		List<SaleInfo> list = null;
+		try {
+			list = searchDAO.getSearchList(searchItem);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 
