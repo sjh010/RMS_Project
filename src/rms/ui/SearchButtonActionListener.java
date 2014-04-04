@@ -27,10 +27,10 @@ public class SearchButtonActionListener implements ActionListener{
 		
 	 	String buildingType = null;
 		String contractType = null;
-		int minSize;
-		int maxSize;
-		int minPrice;
-		int maxPrice;	
+		int minSize=0;
+		int maxSize=0;
+		int minPrice=0;
+		int maxPrice=0;	
 		
 		if(((String)comboBox[0].getSelectedItem()).equals(" ") != false)
 			buildingType = (String)comboBox[0].getSelectedItem();
