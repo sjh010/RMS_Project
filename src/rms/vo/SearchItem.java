@@ -1,16 +1,18 @@
 package rms.vo;
 
+import rms.vo.SearchItem;
+
 public class SearchItem {
 	
-	private String budingType;
+	private String buildingType;
 	private String contractType;
 	private int minSize;
 	private int maxSize;
 	private int minPrice;
 	private int maxPrice;
 	
-	public String getBudingType() {
-		return budingType;
+	public String getBuildingType() {
+		return buildingType;
 	}
 	public String getContractType() {
 		return contractType;
@@ -27,22 +29,28 @@ public class SearchItem {
 	public int getMaxPrice() {
 		return maxPrice;
 	}
-	public void setBudingType(String budingType) {
-		this.budingType = budingType;
+	public SearchItem setBuildingType(String buildingType) {
+		this.buildingType = buildingType;
+		return this;
 	}
-	public void setContractType(String contractType) {
+	public SearchItem setContractType(String contractType) {
 		this.contractType = contractType;
+		return this;
 	}
-	public void setMinSize(int minSize) {
+	public SearchItem setMinSize(int minSize) {
 		this.minSize = minSize;
+		return this;
 	}
-	public void setMaxSize(int maxSize) {
+	public SearchItem setMaxSize(int maxSize) {
 		this.maxSize = maxSize;
+		return this;
 	}
-	public void setMinPrice(int minPrice) {
+	public SearchItem setMinPrice(int minPrice) {
 		this.minPrice = minPrice;
+		return this;
 	}
-	public void setMaxPrice(int maxPrice) {
+	public SearchItem setMaxPrice(int maxPrice) {
 		this.maxPrice = maxPrice;
+		return this;
 	}
 }
