@@ -18,8 +18,13 @@ public class RmsUI {
 		String[] buttonName = {"건물종류", "계약종류", "평",
 	               "호수", "세(가격)", "보증금",
 	               "세입자이름", "세입자전번", "주인이름",
-	               "주인전번", "건물특징", "입력"};
+	               "주인전번", "건물특징"};
 		JButton[] button = UIUtility.setButton(buttonName, contentPane);
+		
+		JButton registButton = new JButton("입력");
+		registButton.setSize(100, 40);
+		registButton.setLocation(1130, 20);
+		contentPane.add(registButton);
 		
 		//콤보박스 만드는 Logic
 		String[][] comboBoxList = {{"아파트", "주택", "빌라"},
@@ -33,7 +38,7 @@ public class RmsUI {
 		//리스너를 입력버튼에 달아주는 Logic
 		ActionListener listener = 
 				new RegistButtonActionListener(comboBox, textField);
-		button[11].addActionListener(listener);
+		button[10].addActionListener(listener);
 		
 		//화면에 디스플레이 하는 Logic
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	

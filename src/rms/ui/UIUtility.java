@@ -20,7 +20,7 @@ public class UIUtility {
 			button[i].setSize(100, 20);
 			button[i].setLocation(buttonX, 20);
 			contentPane.add(button[i]);
-			if( buttonX > 1000 ) buttonX += 110; else buttonX += 100;
+			buttonX += 100;
 		}
 		
 		return button;
