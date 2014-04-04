@@ -85,6 +85,16 @@ public class SaleInfo {
 	public Customer getHost() {
 		return host;
 	}
+	@Override
+	public String toString() {
+		return "SaleInfo [date=" + date + ", buildingType=" + buildingType
+				+ ", size=" + size + ", addr=" + addr + ", price=" + price
+				+ ", deposit=" + deposit + ", buildingFeature="
+				+ buildingFeature + ", contractType=" + contractType
+				+ ", tenant=" + tenant + ", host=" + host + "]";
+	}
+	
+	
 	
 	
 	

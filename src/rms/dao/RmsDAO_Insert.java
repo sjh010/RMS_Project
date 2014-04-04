@@ -5,47 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.swing.plaf.nimbus.AbstractRegionPainter;
+
 import rms.vo.Customer;
 import rms.vo.SaleInfo;
 
-public class RmsDAOImpl implements RmsDAO {
-	Class clz;
-	Connection con = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-	
-	private void connectDB() throws Exception {
-		clz = Class.forName("oracle.jdbc.OracleDriver");
-		try {
-			con = DriverManager
-					.getConnection("jdbc:oracle:thin:@192.168.0.62:1521:orcl","test","test");
-		} catch (Exception e) {
-			System.out.println("DB 접속 실패"+e.toString());
-			throw e;
-		}
-	}
-	
-	private void closePstmt() throws Exception {
-		pstmt.close();
-		pstmt = null;
-	}
-	
-	private void closeRs() throws Exception {
-		rs.close();
-		rs = null;
-	}
-	
-	private void disconnectDB() throws Exception {
-		try{
-			con.close();
-			con = null;;
-		} catch (Exception e) {throw e;} 
-		finally {
-			if(rs!=null){try{rs.close();}catch(Exception e){}}
-			if(pstmt!=null){try{pstmt.close();}catch(Exception e){}}
-			if(con!=null){try{con.close();}catch(Exception e){}}
-		}
-	}
+public class RmsDAO_Insert extends AbstractRmsDAO {
 	
 	@Override
 	public String registCustomer(Customer customer) throws Exception {
@@ -114,4 +79,6 @@ public class RmsDAOImpl implements RmsDAO {
 		
 		return true;
 	}
+	
+	
 }

@@ -3,7 +3,7 @@ package rms.service;
 import java.util.List;
 
 import rms.dao.RmsDAO;
-import rms.dao.RmsDAOImpl;
+import rms.dao.RmsDAO_Insert;
 import rms.vo.Customer;
 import rms.vo.SaleInfo;
 import rms.vo.SearchItem;
@@ -14,7 +14,7 @@ public class RmsServiceImpl implements RmsService{
 	
 	public RmsServiceImpl() {
 		super();
-		this.dao = new RmsDAOImpl();
+		this.dao = new RmsDAO_Insert();
 	}
 
 	@Override
