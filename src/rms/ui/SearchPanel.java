@@ -57,7 +57,7 @@ public class SearchPanel {
 	//텍스트필드 만드는 Logic
 	private void makeTextField(){
 		
-		JTextField[] textField = new JTextField[4];
+		textField = new JTextField[4];
 		UIUtility.setTextField(textField, panel, 220);
 	}
 	
