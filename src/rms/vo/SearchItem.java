@@ -45,7 +45,4 @@ public class SearchItem {
 	public void setMaxPrice(int maxPrice) {
 		this.maxPrice = maxPrice;
 	}
-	
-	
-
 }
