@@ -10,7 +10,7 @@ import javax.swing.plaf.nimbus.AbstractRegionPainter;
 import rms.vo.Customer;
 import rms.vo.SaleInfo;
 
-public class RmsDAO_Insert extends AbstractRmsDAO {
+public class RmsDAOInsert extends AbstractRmsDAO {
 	
 	@Override
 	public String registCustomer(Customer customer) throws Exception {

@@ -7,7 +7,7 @@ import rms.vo.Customer;
 import rms.vo.SaleInfo;
 import rms.vo.SearchItem;
 
-public class RmsDAO_search extends AbstractRmsDAO {
+public class RmsDAOSearch extends AbstractRmsDAO {
 	
 	@Override
 	public List<SaleInfo> getSearchList(SearchItem searchItem) throws Exception{
