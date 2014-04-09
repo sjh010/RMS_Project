@@ -22,8 +22,8 @@ public class RmsDAOSearch extends AbstractRmsDAO {
 						  "where ";
 		
 		
-		if(searchItem.getBudingType() != null){
-			statment = statment + "info.BUILDING_TYPE = " + "'"+searchItem.getBudingType()+"'" + " and ";
+		if(searchItem.getBuildingType() != null){
+			statment = statment + "info.BUILDING_TYPE = " + "'"+searchItem.getBuildingType()+"'" + " and ";
 		}
 		if(searchItem.getContractType() != null){
 			statment = statment + "info.CONTRACT_TYPE = " + "'"+searchItem.getContractType()+"'" + " and ";
